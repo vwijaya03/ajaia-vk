@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
-    "vercel-build": "prisma generate && tsx scripts/setup-turso.ts && tsx prisma/seed.ts && next build",
+    "vercel-build": "DATABASE_URL=file:./prisma/.vercel.db prisma generate && tsx scripts/setup-turso.ts && DATABASE_URL=file:./prisma/.vercel.db tsx prisma/seed.ts && next build",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",

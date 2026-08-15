@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { createPrismaClient } from "../src/lib/create-prisma-client";
 
-const prisma = new PrismaClient();
+const prisma = createPrismaClient();
 
 const SEED_USERS = [
   { email: "alice@ajaia.test", name: "Alice Chen", password: "password123" },
