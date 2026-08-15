@@ -24,6 +24,30 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+### Environment variables (local)
+
+Your `.env` for **local development** must use a SQLite file URL:
+
+```env
+DATABASE_URL="file:./dev.db"
+SESSION_SECRET="any-random-string"
+```
+
+Do **not** set `DATABASE_URL` to `libsql://...` locally — Prisma CLI will error with `the URL must start with the protocol file:`.
+
+Turso vars (`TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`) are **only for Vercel production**. Comment them out locally, or copy `.env.example` again:
+
+```bash
+cp .env.example .env
+```
+
+| Variable | Local | Vercel |
+|----------|-------|--------|
+| `DATABASE_URL` | `file:./dev.db` | `file:./prisma/.vercel.db` |
+| `TURSO_DATABASE_URL` | *(unset)* | `libsql://....turso.io` |
+| `TURSO_AUTH_TOKEN` | *(unset)* | Turso token |
+| `SESSION_SECRET` | any string | random string |
+
 ## Demo accounts
 
 | Email | Password | Notes |
