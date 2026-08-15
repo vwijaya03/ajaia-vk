@@ -98,6 +98,12 @@ https://your-project.vercel.app
 
 ## Troubleshooting
 
+**Turso schema setup failed: invalid header value / Bearer ...**
+- `TURSO_AUTH_TOKEN` harus **satu baris** tanpa line break
+- Jangan sertakan prefix `Bearer ` — cukup token JWT-nya saja
+- Generate ulang: `turso db tokens create ajaia-docs`
+- Paste token di Vercel tanpa spasi/newline di awal atau akhir
+
 **Build gagal: `the URL must start with the protocol file:`**
 - Set `DATABASE_URL=file:./prisma/.vercel.db` (bukan `libsql://...`)
 - Turso connection hanya lewat `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN`

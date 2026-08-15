@@ -1,4 +1,5 @@
 import { createClient } from "@libsql/client";
+import { getTursoConfig } from "../src/lib/turso-env";
 
 const SCHEMA_SQL = `
 CREATE TABLE IF NOT EXISTS "User" (
@@ -45,15 +46,14 @@ CREATE TABLE IF NOT EXISTS "Attachment" (
 `;
 
 async function main() {
-  const url = process.env.TURSO_DATABASE_URL;
-  const authToken = process.env.TURSO_AUTH_TOKEN;
+  const turso = getTursoConfig();
 
-  if (!url || !authToken) {
+  if (!turso) {
     console.log("Turso env vars not set — skipping remote schema setup (local SQLite uses prisma db push).");
     return;
   }
 
-  const client = createClient({ url, authToken });
+  const client = createClient(turso);
   const statements = SCHEMA_SQL.split(";")
     .map((s) => s.trim())
     .filter(Boolean);
