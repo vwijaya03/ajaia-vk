@@ -105,8 +105,8 @@ Ringkas:
 1. Push repo ke GitHub
 2. Buat DB di [turso.tech](https://turso.tech) → dapat URL + token
 3. Deploy di [vercel.com/new](https://vercel.com/new) → set env vars:
-   - `DATABASE_URL` = `libsql://....turso.io`
-   - `TURSO_DATABASE_URL` = sama
+   - `DATABASE_URL` = `file:./prisma/.vercel.db` (untuk Prisma CLI)
+   - `TURSO_DATABASE_URL` = `libsql://....turso.io`
    - `TURSO_AUTH_TOKEN` = token Turso
    - `SESSION_SECRET` = random string
 4. Deploy — selesai

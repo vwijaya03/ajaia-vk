@@ -59,18 +59,20 @@ Catat:
 
 Tambahkan di Vercel → Project → Settings → Environment Variables:
 
-| Name | Value |
-|------|-------|
-| `DATABASE_URL` | `libsql://your-db.turso.io` |
-| `TURSO_DATABASE_URL` | sama dengan `DATABASE_URL` |
-| `TURSO_AUTH_TOKEN` | token dari `turso db tokens create` |
-| `SESSION_SECRET` | string random panjang (min 32 karakter) |
+| Name | Value | Catatan |
+|------|-------|---------|
+| `DATABASE_URL` | `file:./prisma/.vercel.db` | **Wajib `file:`** — hanya untuk Prisma CLI saat build |
+| `TURSO_DATABASE_URL` | `libsql://your-db.turso.io` | URL database Turso |
+| `TURSO_AUTH_TOKEN` | token dari `turso db tokens create` | |
+| `SESSION_SECRET` | string random panjang (min 32 karakter) | |
+
+> **Penting:** Jangan set `DATABASE_URL` ke `libsql://...` — Prisma CLI error `the URL must start with the protocol file:`. Runtime app pakai `TURSO_*`, bukan `DATABASE_URL`.
 
 5. Klik **Deploy**
 
 Build command otomatis pakai `vercel-build` yang akan:
 - generate Prisma client
-- push schema ke Turso
+- setup schema ke Turso (via `scripts/setup-turso.ts`)
 - seed demo users
 - build Next.js
 
@@ -96,9 +98,12 @@ https://your-project.vercel.app
 
 ## Troubleshooting
 
-**Build gagal di `prisma db push`**
-- Pastikan `DATABASE_URL` dan `TURSO_AUTH_TOKEN` sudah benar
-- URL harus format `libsql://...` bukan `file:./dev.db`
+**Build gagal: `the URL must start with the protocol file:`**
+- Set `DATABASE_URL=file:./prisma/.vercel.db` (bukan `libsql://...`)
+- Turso connection hanya lewat `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN`
+
+**Build gagal di schema setup**
+- Pastikan `TURSO_DATABASE_URL` dan `TURSO_AUTH_TOKEN` sudah benar
 
 **Login OK tapi dokumen hilang setelah refresh**
 - Turso env vars belum diset → app jatuh ke SQLite ephemeral di `/tmp`
