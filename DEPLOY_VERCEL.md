@@ -88,10 +88,10 @@ Build command otomatis pakai `vercel-build` yang akan:
 
 ## Update SUBMISSION.md
 
-Setelah deploy sukses, ganti `LIVE_URL_TBD` dengan URL Vercel kamu:
+Setelah deploy sukses, update URL live di README dan SUBMISSION.md:
 
 ```
-https://your-project.vercel.app
+https://ajaia-vk-nine.vercel.app/login
 ```
 
 ---

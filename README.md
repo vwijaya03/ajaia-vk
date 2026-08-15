@@ -4,9 +4,7 @@ A lightweight collaborative document editor built for the Ajaia full-stack assig
 
 ## Live demo
 
-> **Deploy before submission:** See [Deployment](#deployment) below. Add your live URL here and in `SUBMISSION.md`.
-
-`LIVE_URL_TBD`
+**Live demo:** https://ajaia-vk-nine.vercel.app/login
 
 ## Quick start (local)
 

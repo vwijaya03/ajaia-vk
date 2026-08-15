@@ -10,7 +10,7 @@
 | AI workflow note | `ajaia-docs/AI_WORKFLOW.md` | ✅ |
 | This submission index | `ajaia-docs/SUBMISSION.md` | ✅ |
 | Walkthrough video URL | `ajaia-docs/VIDEO_URL.txt` | ✅ |
-| Live deployment URL | README + below | ⏳ Deploy to Railway/Docker |
+| Live deployment URL | README + below | ✅ |
 
 ## Walkthrough video
 
@@ -18,9 +18,7 @@ https://www.loom.com/share/9fa3887c868c412caa52477a0e060d57
 
 ## Live URL
 
-```
-LIVE_URL_TBD
-```
+https://ajaia-vk-nine.vercel.app/login
 
 ## Review credentials
 
@@ -47,7 +45,6 @@ All demo users share password: `password123`
 - `.docx` import
 - Autosave (manual Save button only)
 - Role-based permissions (view vs edit)
-- Cloud deployment URL (needs deploy step)
 
 ## Next 2–4 hours (if continued)
 
